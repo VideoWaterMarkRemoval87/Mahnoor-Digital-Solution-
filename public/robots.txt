@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /owner-dashboard
+Disallow: /crm
+Disallow: /client-acquisition
+Disallow: /client-hunter
+Disallow: /hunter
+Disallow: /api/
+
+# TODO: replace with your real live domain once deployed.
+Sitemap: https://mahnoordigitalsolution.com/sitemap.xml

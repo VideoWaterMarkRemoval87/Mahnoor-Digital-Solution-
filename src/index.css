@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  --color-teal-primary: #075B57;
+  --color-teal-deep: #064946;
+  --color-teal-darkest: #033B39;
+  --color-teal-secondary: #0B706A;
+  --color-warm-accent: #F5A623;
+  --color-soft-cream: #F7F7F2;
+  --color-text-primary: #172222;
+  --color-text-secondary: #667272;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #172222;
+    background-color: #F7F7F2;
+  }
+}
+
+/* Custom organic wave clip paths and subtle card transitions */
+.curved-bottom {
+  border-bottom-left-radius: clamp(2rem, 5vw, 4.5rem);
+  border-bottom-right-radius: clamp(2rem, 5vw, 4.5rem);
+}
+
+.curved-top {
+  border-top-left-radius: clamp(2rem, 5vw, 4.5rem);
+  border-top-right-radius: clamp(2rem, 5vw, 4.5rem);
+}
+
+.organic-card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(6, 73, 70, 0.08), 0 4px 6px -2px rgba(6, 73, 70, 0.04);
+}
+
+.organic-card-shadow-hover:hover {
+  box-shadow: 0 20px 40px -15px rgba(6, 73, 70, 0.16), 0 8px 16px -4px rgba(6, 73, 70, 0.08);
+}
+
+/* Google Translate Widget & Layout Fixes */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-tooltip {
+  display: none !important;
+}
+
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hide Google branding in custom selector container if desired */
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0px !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  font-family: var(--font-sans);
+  font-size: 12px !important;
+  padding: 6px 12px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(11, 112, 106, 0.3) !important;
+  background-color: #ffffff !important;
+  color: #172222 !important;
+  outline: none !important;
+  cursor: pointer;
+}

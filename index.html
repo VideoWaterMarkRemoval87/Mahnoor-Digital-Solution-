@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Polyfill and guard for window.fetch setter in iframe & extension environments -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : null;
+          var _fetchHandler = originalFetch;
+
+          // Define getter and setter on window so scripts assigning window.fetch do not throw
+          try {
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function() {
+                return _fetchHandler;
+              },
+              set: function(fn) {
+                _fetchHandler = fn;
+              }
+            });
+          } catch (e1) {}
+
+          // Also patch Window.prototype if configurable
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              var desc = Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+              if (desc && !desc.set && desc.configurable) {
+                Object.defineProperty(Window.prototype, 'fetch', {
+                  configurable: true,
+                  enumerable: true,
+                  get: function() {
+                    return _fetchHandler;
+                  },
+                  set: function(fn) {
+                    _fetchHandler = fn;
+                  }
+                });
+              }
+            }
+          } catch (e2) {}
+        } catch (e) {}
+
+        // Suppress any non-critical getter error from external wrappers
+        window.addEventListener('error', function(event) {
+          if (event && event.message && event.message.indexOf('Cannot set property fetch') !== -1) {
+            if (typeof event.stopImmediatePropagation === 'function') {
+              event.stopImmediatePropagation();
+            }
+            if (typeof event.preventDefault === 'function') {
+              event.preventDefault();
+            }
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+
+    <title>Mahnoor Digital Solution – Freelance WordPress, Canva & AI Solutions</title>
+    <meta name="description" content="Hire Mahnoor Naaz (Mahnoor Digital Solution) for bespoke WordPress & Elementor web design, Canva branding templates, SEO content writing, and AI-accelerated digital solutions." />
+    <meta name="keywords" content="Mahnoor Digital Solution, Mahnoor Naaz, freelance web designer, WordPress developer, Elementor expert, Canva graphic designer, SEO content writer, hire freelancer Pakistan, remote website developer, business websites, WooCommerce store, AI workflows" />
+    <meta name="author" content="Mahnoor Naaz" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#033B39" />
+
+    <!-- TODO: replace with your real live domain once deployed (e.g. https://mahnoordigitalsolution.com/).
+         Without this, search engines don't know the canonical URL and social
+         shares (WhatsApp/LinkedIn/Facebook) can't build a link preview. -->
+    <link rel="canonical" href="https://mahnoordigitalsolution.com/" />
+
+    <!-- <MDS> Brand Logo Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23033B39'/%3E%3Cpath d='M26 36 L15 50 L26 64' stroke='%23F5A623' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M74 36 L85 50 L74 64' stroke='%23F5A623' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ctext x='50' y='57' font-family='system-ui, -apple-system, sans-serif' font-weight='900' font-size='22' fill='%23FFFFFF' text-anchor='middle'%3EMDS%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:site_name" content="Mahnoor Digital Solution" />
+    <meta property="og:title" content="Mahnoor Digital Solution – Freelance Web Design, Canva & AI Solutions" />
+    <meta property="og:description" content="Professional freelance web design, WordPress development, Canva graphics, content creation, and AI-powered digital solutions for modern businesses worldwide." />
+    <meta property="og:locale" content="en_US" />
+    <!-- TODO: same real domain as the canonical tag above -->
+    <meta property="og:url" content="https://mahnoordigitalsolution.com/" />
+    <!-- TODO: replace with a real 1200x630 preview image hosted at your domain
+         (e.g. /assets/og-preview.jpg) once deployed, so WhatsApp/LinkedIn
+         link shares show a picture instead of a blank card. -->
+    <meta property="og:image" content="https://mahnoordigitalsolution.com/og-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mahnoor Digital Solution – Freelance Web Design & AI Solutions" />
+    <meta name="twitter:description" content="Professional freelance web design, WordPress development, Canva graphics, content creation, and AI-powered digital solutions for modern businesses." />
+    <meta name="twitter:image" content="https://mahnoordigitalsolution.com/og-preview.jpg" />
+
+    <!-- Google Fonts: Manrope & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD (ProfessionalService + Person + FAQPage).
+         NOTE: a fabricated "aggregateRating: 5.0 / 38 reviews" block was
+         removed from here. Google's structured data policy requires
+         review/rating markup to reflect real, verifiable reviews — an
+         unverifiable rating risks a manual action that suppresses rich
+         results sitewide. Once you have real reviews (Fiverr, Upwork,
+         Google Business Profile), add an "aggregateRating" field back
+         inside the ProfessionalService object below with your real
+         ratingValue and reviewCount. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://mahnoordigitalsolution.com/#business",
+          "name": "Mahnoor Digital Solution",
+          "alternateName": "MDS",
+          "description": "Professional freelance web design, WordPress development, Canva branding graphics, SEO content writing, and AI-accelerated workflows.",
+          "email": "mahambitget9807@gmail.com",
+          "founder": {
+            "@type": "Person",
+            "name": "Mahnoor Naaz",
+            "jobTitle": "Lead Digital Specialist & Freelance Designer",
+            "email": "mahambitget9807@gmail.com",
+            "sameAs": [
+              "https://wa.me/923247939635"
+            ]
+          },
+          "areaServed": [
+            { "@type": "Country", "name": "Pakistan" },
+            { "@type": "Country", "name": "United States" },
+            { "@type": "Country", "name": "United Kingdom" },
+            { "@type": "Country", "name": "United Arab Emirates" },
+            { "@type": "Country", "name": "Canada" },
+            { "@type": "Country", "name": "Australia" }
+          ],
+          "serviceType": [
+            "WordPress Website Design",
+            "Elementor Website Redesign",
+            "WooCommerce Online Store Development",
+            "Canva Brand Kit & Template Design",
+            "Social Media Post & Carousel Design",
+            "SEO Blog & Website Copywriting",
+            "AI Workflow Integration"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Freelance Digital Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "WordPress Website Design",
+                  "description": "Bespoke, high-converting WordPress & Elementor website design delivered in 3-7 days."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Canva Graphic Design & Brand Templates",
+                  "description": "Reusable social media graphics, pitch decks, and ebooks in Canva."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "SEO Content Writing",
+                  "description": "High-ranking search engine optimized articles, landing page copy, and product descriptions."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mahnoordigitalsolution.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How fast can Mahnoor Digital Solution deliver a WordPress website?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most WordPress websites and Canva template packs are delivered in 3 to 7 business days with rapid revision cycles."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I contact Mahnoor Naaz for a project?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can email mahambitget9807@gmail.com or send a message directly on WhatsApp for instant quotations."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-[#F7F7F2] text-[#172222] font-sans antialiased selection:bg-[#F5A623]/25 selection:text-[#064946]">
+    <!-- Google Website Translator Global Container -->
+    <div id="google_translate_element" style="display:none"></div>
+    <script type="text/javascript">
+      window.googleTranslateElementInit = function() {
+        if (window.google && window.google.translate) {
+          try {
+            new window.google.translate.TranslateElement({
+              pageLanguage: 'en',
+              autoDisplay: false
+            }, 'google_translate_element');
+          } catch (e) {}
+        }
+      };
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
